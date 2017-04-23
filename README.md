@@ -1,6 +1,5 @@
 ## Synopsis
-
-https://socialmediafreedom.com/ 
+demo
 Is social Media. user can upload new post or other User can like,dislike and comment on the Task. User can also share video. uther user can like and unlike their status.      
 
 ## Installation
