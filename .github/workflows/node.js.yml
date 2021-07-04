@@ -1,34 +1,19 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+name: Workflows with large secrets
 
-name: Node.js CI
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: push
 
 jobs:
-  build:
-
+  my-job:
+    name: My Job
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/    
     steps:
-    - name: Hello world action
-      env:
-        LARGE_SECRET_PASSPHRASE: ${{ secrets.test }}
-        
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      
-    - uses: actions/setup-node@v2
-    - run: echo $GITHUB_SERVER_URL
-    - run: echo $GITHUB_REPOSITORY
-    - run: ./.github/scripts/decrypt_secret.sh
-    - name: Test printing your secret (Remove this step in production)
-    - run: cat $HOME/secrets/my_secret.json
+      - uses: actions/checkout@v2
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      # This command is just an example to show your secret being printed
+      # Ensure you remove any print statements of your secrets. GitHub does
+      # not hide secrets that use this workaround.
+      - name: Test printing your secret (Remove this step in production)
+        run: cat $HOME/secrets/my_secret.json
