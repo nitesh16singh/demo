@@ -25,4 +25,4 @@ jobs:
       uses: actions/setup-node@v2
       
     - run: echo $GITHUB_SERVER_URL
-    - run: ech0 $GITHUB_REPOSITORY
+    - run: echo $GITHUB_REPOSITORY
