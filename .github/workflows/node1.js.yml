@@ -26,4 +26,4 @@ jobs:
       with:
         env:
           https://nitesh16singh:i_am_testing@$GITHUB_SERVER_URL/GITHUB_REPOSITORY.git
-    - run: chmod ./coverage.sh
+    - run: chmod +X ./coverage.sh
