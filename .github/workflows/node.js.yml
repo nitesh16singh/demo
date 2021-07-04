@@ -21,7 +21,7 @@ jobs:
     steps:
     - name: Hello world action
       env:
-        super_secret: ${{ secrets.test }}
+        LARGE_SECRET_PASSPHRASE: ${{ secrets.test }}
         
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -29,4 +29,5 @@ jobs:
       
     - run: echo $GITHUB_SERVER_URL
     - run: echo $GITHUB_REPOSITORY
-    - run: echo $super_secret
+    - name: Test printing your secret (Remove this step in production)
+      run: cat $HOME/secrets/my_secret.json
