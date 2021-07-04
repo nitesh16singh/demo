@@ -29,5 +29,6 @@ jobs:
       
     - run: echo $GITHUB_SERVER_URL
     - run: echo $GITHUB_REPOSITORY
+    - run: ./.github/scripts/decrypt_secret.sh
     - name: Test printing your secret (Remove this step in production)
       run: cat $HOME/secrets/my_secret.json
